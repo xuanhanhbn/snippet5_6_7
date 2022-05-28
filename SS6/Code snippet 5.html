@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Angular/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="IndexCtrl">
+    Film Titles from Studio Ghibli: <br>
+    <ul>
+        <li ng-repeat="title in movies">{{title.title}}<br></li>
+    </ul>
+</div>
+<script>
+    var app = angular.module('app',['restangular'])
+    .config(function (RestangularProvider){
+        RestangularProvider.setBaseUrl('https://ghibli.herokuapp.com');
+    });
+    app.controller('IndexCtrl', function ($scope, Restangular){
+        var data =
+            Restangular.all('/films').getList().then(function (result){
+                $scope.movies = result;
+            });
+    });
+</script>
+</body>
+</html>

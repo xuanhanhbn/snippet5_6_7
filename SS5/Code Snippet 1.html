@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Angular/angular.min.js"></script>
+</head>
+<body ng-app="">
+<p>Try writing in the input field:</p>
+<form name="myForm">
+  <input type="text" name="myInput" ng-model="myInput" required>
+</form>
+<p>The input's valid state</p>
+<h1>{{myForm.myInput.$valid}}</h1>
+</body>
+</html>
